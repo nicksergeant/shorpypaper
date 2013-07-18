@@ -3,6 +3,12 @@ from pyquery import PyQuery as pq
 import requests
 import subprocess
 
+APPLESCRIPT = """/usr/bin/osascript<<END
+tell application "Finder"
+set desktop picture to POSIX file "%s"
+end tell
+END"""
+
 def main():
 
     # Load main site.
@@ -17,6 +23,9 @@ def main():
     image = j('img').eq(0).attr('src')
 
     with open('/tmp/dailyshorpy.jpg', 'wb') as handle:
+
+        # To reset the cached dailyshorpy.jpg.
+        subprocess.Popen(APPLESCRIPT % '/Library/Desktop Pictures/Frog.jpg', shell=True)
         request = requests.get(image, stream=True)
 
         for block in request.iter_content(1024):
@@ -24,12 +33,7 @@ def main():
                 break
             handle.write(block)
 
-        applescript = """/usr/bin/osascript<<END
-tell application "Finder"
-set desktop picture to POSIX file "%s"
-end tell
-END"""
-        subprocess.Popen(applescript % '/tmp/dailyshorpy.jpg', shell=True)
+        subprocess.Popen(APPLESCRIPT % '/tmp/dailyshorpy.jpg', shell=True)
 
 
 if __name__ == '__main__':
