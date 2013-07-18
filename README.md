@@ -16,6 +16,6 @@ Requirements can be installed directly by using:
 Using shorpypaper
 -----------------
 
-    > shorpypaper
+    > python shorpypaper.py
 
 That's literally it.
