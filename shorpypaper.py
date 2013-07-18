@@ -4,8 +4,15 @@ import requests
 import subprocess
 
 APPLESCRIPT = """/usr/bin/osascript<<END
+set path_to_shorpy to POSIX file "%s"
 tell application "Finder"
-set desktop picture to POSIX file "%s"
+  tell application "System Events"
+    set theDesktops to a reference to every desktop
+    set picture of item 1 of the theDesktops to file path_to_shorpy
+    set picture of item 2 of the theDesktops to file path_to_shorpy
+    set picture of item 3 of the theDesktops to file path_to_shorpy
+  end tell
+  set desktop picture to file path_to_shorpy
 end tell
 END"""
 
