@@ -4,17 +4,14 @@ import requests
 import subprocess
 
 APPLESCRIPT = """/usr/bin/osascript<<END
-set path_to_shorpy to POSIX file "%s"
-tell application "Finder"
   tell application "System Events"
-    set theDesktops to a reference to every desktop
-    set picture of item 1 of the theDesktops to file path_to_shorpy
-    set picture of item 2 of the theDesktops to file path_to_shorpy
-    set picture of item 3 of the theDesktops to file path_to_shorpy
+      set theDesktops to a reference to every desktop
+      repeat with x from 1 to (count theDesktops)
+          set picture of item x of the theDesktops to "{}"
+      end repeat
   end tell
-  set desktop picture to file path_to_shorpy
-end tell
 END"""
+
 
 def main():
 
@@ -32,7 +29,9 @@ def main():
     with open('/tmp/dailyshorpy.jpg', 'wb') as handle:
 
         # To reset the cached dailyshorpy.jpg.
-        subprocess.Popen(APPLESCRIPT % '/Library/Desktop Pictures/Solid Colors/Solid Gray Light.png', shell=True)
+        subprocess.Popen(APPLESCRIPT.format(
+            '/Library/Desktop Pictures/Solid Colors/Solid Gray Light.png'),
+            shell=True)
         request = requests.get(image, stream=True)
 
         for block in request.iter_content(1024):
@@ -40,7 +39,8 @@ def main():
                 break
             handle.write(block)
 
-        subprocess.Popen(APPLESCRIPT % '/tmp/dailyshorpy.jpg', shell=True)
+        subprocess.Popen(APPLESCRIPT.format('/tmp/dailyshorpy.jpg'),
+                         shell=True)
 
 
 if __name__ == '__main__':
