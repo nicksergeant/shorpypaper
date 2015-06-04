@@ -31,6 +31,11 @@ def main():
     j = pq(r.content)
     image = j('img').eq(0).attr('src')
 
+    # To reset the cached dailyshorpy.jpg.
+    subprocess.Popen(APPLESCRIPT.format(
+        '/Library/Desktop Pictures/Solid Colors/Solid Gray Light.png'),
+        shell=True)
+
     with open(tmpShorpyPhoto, 'wb') as handle:
         request = requests.get(image, stream=True)
         for block in request.iter_content(1024):
