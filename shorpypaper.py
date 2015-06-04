@@ -4,7 +4,7 @@ import requests
 import subprocess
 import time
 
-timestamp = int(time.time())
+tmpShorpyPhoto = '/tmp/dailyshorpy{}.jpg'.format(int(time.time()))
 
 APPLESCRIPT = """/usr/bin/osascript<<END
     tell application "System Events"
@@ -31,13 +31,13 @@ def main():
     j = pq(r.content)
     image = j('img').eq(0).attr('src')
 
-    with open('/tmp/dailyshorpy{}.jpg'.format(timestamp), 'wb') as handle:
+    with open(tmpShorpyPhoto, 'wb') as handle:
         request = requests.get(image, stream=True)
         for block in request.iter_content(1024):
             if not block:
                 break
             handle.write(block)
-        subprocess.Popen(APPLESCRIPT.format('/tmp/dailyshorpy{}.jpg'.format(timestamp)),
+        subprocess.Popen(APPLESCRIPT.format(tmpShorpyPhoto),
                          shell=True)
 
 
