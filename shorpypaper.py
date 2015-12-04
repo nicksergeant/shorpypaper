@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 from pyquery import PyQuery as pq
 import requests
 import subprocess
