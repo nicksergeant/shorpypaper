@@ -1,7 +1,7 @@
 Shorpypaper
 ===========
 
-A Python script that sets your OS X desktop wallpaper to the latest Shorpy photo.
+A Python script that sets your macOS desktop wallpaper to the latest Shorpy photo.
 
 Requirements
 ------------
