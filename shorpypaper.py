@@ -1,4 +1,4 @@
-#!/opt/homebrew/bin/python3
+#!/Users/nsergeant/.virtualenvs/shorpypaper/bin/python3
 from pyquery import PyQuery as pq
 import requests
 import subprocess
