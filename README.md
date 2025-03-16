@@ -1,6 +1,6 @@
 # Shorpypaper
 
-A Node.js script that sets your macOS desktop wallpaper to the latest Shorpy photo.
+A Node.js script that sets your macOS desktop wallpaper to the latest [Shorpy.com](https://www.shorpy.com/) photo.
 
 ## Requirements
 
