@@ -1,21 +1,47 @@
-Shorpypaper
-===========
+# Shorpypaper
 
-A Python script that sets your macOS desktop wallpaper to the latest Shorpy photo.
+A Node.js script that sets your macOS desktop wallpaper to the latest Shorpy photo.
 
-Requirements
-------------
+## Requirements
 
-* [Requests](http://docs.python-requests.org/en/latest/index.html)
-* [pyquery](http://packages.python.org/pyquery/)
+- Node.js 14 or later
 
-Requirements can be installed directly by using:
+## Installation
 
-    pip install -r requirements.txt
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/shorpypaper.git
+cd shorpypaper
 
-Using shorpypaper
------------------
+# Install dependencies
+npm install
 
-    > python shorpypaper.py
+# Make the script executable
+chmod +x shorpypaper.js
+```
 
-That's literally it.
+## Usage
+
+```bash
+# Run directly
+./shorpypaper.js
+
+# Or use npm
+npm start
+
+# Or install globally
+npm install -g .
+shorpypaper
+```
+
+## Dependencies
+
+This project uses:
+- axios - For HTTP requests
+- cheerio - For HTML parsing (jQuery-like in Node.js)
+
+These dependencies were chosen for their:
+- Widespread usage
+- Active maintenance
+- Minimal dependencies of their own
+- Long-term stability

@@ -1,0 +1,20 @@
+{
+  "name": "shorpypaper",
+  "version": "1.0.0",
+  "description": "Sets your macOS desktop wallpaper to the latest Shorpy photo",
+  "main": "shorpypaper.js",
+  "scripts": {
+    "start": "node shorpypaper.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.7",
+    "cheerio": "^1.0.0-rc.12"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "bin": {
+    "shorpypaper": "./shorpypaper.js"
+  },
+  "license": "MIT"
+}
